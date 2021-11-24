@@ -35,6 +35,12 @@ void ft_search(Phonebook contact[8], int contact_count)
 {
     int id;
 
+     if(contact_count == 0)
+     {
+         std::cout << "Your contact list is empty" << std::endl;
+         return ;
+     }
+
     std::cout << std::setfill (' ') << std::setw (10) << "index";
     std::cout << '|';
     std::cout << std::setfill(' ') << std::setw(10) << "first name";
@@ -47,16 +53,17 @@ void ft_search(Phonebook contact[8], int contact_count)
     for(int i = 0; i < contact_count; i++)
         contact[i].ft_print(i);
     std::cout << "Input the id number: ";
-    while(std::cin>>id)
+    std::cin >> id;
+    if(id < 0 || id > 7 || id > contact_count || std::cin.fail())
     {
-        if(id < 0 || id > contact_count)
-        std::cout << "Invalid id... Try again: ";
-        else 
-        {
-            contact[id].ft_print_all();
-            break;
-        }
+    
+         std::cout << "Invalid Argument, contact not found" <<std::endl;
+         std::cin.clear();
+         std::cin.ignore(10000, '\n');
+         return ;
     }
+    else
+            contact[id].ft_print_all();
 }
 
 void ft_exit()
@@ -76,6 +83,7 @@ int main()
     
     while(1)
     {
+       // std::cin.clear();
         std::cout << "What you will choose > ";
         std::cin >> input;
         if(input == "ADD")
@@ -89,7 +97,6 @@ int main()
             {
                 contacts[contact_count] = ft_add();
                 contact_count++;
-                std::cout << contact_count << std::endl;
             }
         }
         else if(input == "SEARCH")
