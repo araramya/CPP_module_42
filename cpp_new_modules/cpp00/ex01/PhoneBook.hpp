@@ -34,8 +34,15 @@ class PhoneBook
     
     public:
         Contact AddContact();
-        void SearchContact();
-        void Exit();
+        Contact getNewContact(int index);
+        void    setNewContact(int index, Contact newContact);
+        void    printContact(int i);
+        void    printAll();     
+        void    SearchContact();
+        void    Exit();
+
+    public:
+        int ContactIndex;
 };
 
 #endif

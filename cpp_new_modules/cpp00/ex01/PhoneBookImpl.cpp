@@ -25,6 +25,11 @@ std::string Contact::getDarkestSecret()
     return this->DarkestSecret;
 }
 
+Contact PhoneBook::getNewContact(int index)
+{
+    return this->contacts[index];
+}
+
 void Contact::setFirstName(std::string FirstName)
 {
     this->FirstName = FirstName;
@@ -48,6 +53,11 @@ void Contact::setPhoneNumber(std::string PhoneBook)
 void Contact::setDarkestSecret(std::string DarkestSecret)
 {
     this->DarkestSecret = DarkestSecret;
+}
+
+void PhoneBook::setNewContact(int index, Contact newContact)
+{
+    this->contacts[index] = newContact;
 }
 
 Contact PhoneBook::AddContact()
@@ -75,5 +85,29 @@ Contact PhoneBook::AddContact()
     std::cin >> temp;
     new_cont.setDarkestSecret(temp);
     
+
+    new_cont.setDarkestSecret(temp);
+    
     return (new_cont);
+}
+
+void PhoneBook::printContact(int i)
+{
+    std::cout << "___FIRST_NAME___" << this->contacts[i].getFirstName() << std::endl;
+    std::cout << "___LAST_NAME___" << this->contacts[i].getLastName() << std::endl;
+    std::cout << "___NICKNAME___" << this->contacts[i].getNickname() << std::endl;
+    std::cout << "___PHONE_NUMBER___" << this->contacts[i].getPhoneNumber() << std::endl;    
+    std::cout << "___DARKEST_SECRET___" << this->contacts[i].getDarkestSecret() << std::endl;
+}
+
+void PhoneBook::printAll()
+{
+    int i;
+    i = 0;
+    std::cout << "__CONTACT_INDEX___" <<this->ContactIndex << std::endl;
+    while(i <= this->ContactIndex)
+    {
+        printContact();
+        i++;
+    }
 }

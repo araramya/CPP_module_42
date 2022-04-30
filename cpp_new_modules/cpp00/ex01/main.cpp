@@ -2,10 +2,14 @@
 
 int main()
 {
-    PhoneBook myPhonebook;
-    int       contact_count = 0;
+    PhoneBook   myPhonebook;
+    int         contact_count;
+    int         oldestOne;
     std::string input;
 
+    myPhonebook.ContactIndex = 0;
+    contact_count = 0;
+    oldestOne = 0;
     std::cout << "Welcome to PHONEBOOK!!!" << std::endl;
     std::cout << "You have three operations ADD SEARCH EXIT" << std::endl;
     while(1)
@@ -16,11 +20,18 @@ int main()
         {
             if (contact_count == 8)
             {
-                //special case
+                myPhonebook.ContactIndex = 0;
+                myPhonebook.setNewContact(oldestOne, myPhonebook.AddContact());
+                myPhonebook.printAll();
+                oldestOne++;
+                if(oldestOne == 8)
+                    oldestOne = 0;
             } 
             else
             {
-                myPhonebook.AddContact();
+                myPhonebook.setNewContact(myPhonebook.ContactIndex, myPhonebook.AddContact());
+                myPhonebook.printAll();
+                myPhonebook.ContactIndex++;
             }
         }
         else if (input == "SEARCH")
@@ -30,7 +41,7 @@ int main()
         {}
            // myPhonebook.Exit();
         else 
-            std::cout << "" << 
+            std::cout << "ADD, SEARCH, EXIT it isn't so hard to remeber" << std::endl; 
     }
     return (0);
 }
