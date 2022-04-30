@@ -2,46 +2,37 @@
 
 int main()
 {
-    PhoneBook   myPhonebook;
-    int         contact_count;
-    int         oldestOne;
-    std::string input;
+    std::string cmd;
+    std::string usrAnswear;
+    PhoneBook MyPhoneBook;
 
-    myPhonebook.ContactIndex = 0;
-    contact_count = 0;
-    oldestOne = 0;
-    std::cout << "Welcome to PHONEBOOK!!!" << std::endl;
-    std::cout << "You have three operations ADD SEARCH EXIT" << std::endl;
+    std::cout << "WELCOME TO PHONEBOOK!!!!!" << std::endl;
+    std::cout << "You have three options ADD SEARCH and EXIT " << std::endl;
     while(1)
     {
-        std::cout << "What you will choose >> ";
-        std::cin >> input;
-        if (input == "ADD")
+        std::cout << "What you will choose ?" << std::endl;
+        std::cin >> usrAnswear;
+        if (usrAnswear == "ADD")
         {
-            if (contact_count == 8)
-            {
-                myPhonebook.ContactIndex = 0;
-                myPhonebook.setNewContact(oldestOne, myPhonebook.AddContact());
-                myPhonebook.printAll();
-                oldestOne++;
-                if(oldestOne == 8)
-                    oldestOne = 0;
-            } 
-            else
-            {
-                myPhonebook.setNewContact(myPhonebook.ContactIndex, myPhonebook.AddContact());
-                myPhonebook.printAll();
-                myPhonebook.ContactIndex++;
-            }
+            //add functionality
+            MyPhoneBook.AddContact();
         }
-        else if (input == "SEARCH")
-        {}
-          //  myPhonebook.SearchContact();
-        else if (input == "EXIT")
-        {}
-           // myPhonebook.Exit();
-        else 
-            std::cout << "ADD, SEARCH, EXIT it isn't so hard to remeber" << std::endl; 
+        else if (usrAnswear == "SEARCH")
+        {
+            //search funcitonality
+            MyPhoneBook.PrintPhoneBook();
+        }
+        else if (usrAnswear == "EXIT")
+        {
+            std::cout << "Bye )" << std::endl;
+            exit(0);
+        }
+        else
+        {
+            std::cout << "Yeah of Corse... You wanna try something new ?" << std::endl;
+            std::cout << "Guess what ???" <<std::endl;
+            std::cout << "There is NOTHING .... nothing..." << std::endl;
+        }
     }
     return (0);
 }
