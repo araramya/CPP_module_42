@@ -10,22 +10,18 @@ void PhoneBook::AddContact()
 {
     MyContacts[ContIndex].SetContact();
     ContIndex++;
-    ContCount++;
+    if(ContCount < MAX_CONT_NUM )
+        ContCount++;
     if(ContIndex == MAX_CONT_NUM)
         ContIndex = 0;
-}
-
-void PhoneBook::ChooseIndex(int Index)
-{
-
 }
 
 void PhoneBook::PrintPhoneBook()
 {
     int i;
-    int ContIndex;
+    int InputIndex;
 
-    i = 0;
+    i = -1;
     std::cout << std::setfill(' ') << std::setw(10) << "Index";
     std::cout << "|";
     std::cout << std::setfill(' ') << std::setw(10) << "First Name";
@@ -34,16 +30,24 @@ void PhoneBook::PrintPhoneBook()
     std::cout << "|";
     std::cout << std::setfill(' ') << std::setw(10) << "Nickname";
     std::cout << "|" << std::endl;
-    while(i < ContCount)
+    while(++i < ContCount)
     {
-        this->MyContacts[i].PrintContact(i);
-        i++;
+       // std::cout << "_____INDEX____" << i << std::endl;
+       // std::cout << "_____CONT_COUNT____" << ContCount << std::endl;
+
+        this->MyContacts[i].PrintContact(i);   
     }
     std::cout << "Choose Index if you want see more information about contact." << std::endl;
-    std::cin >> ContIndex;
-    if(ContIndex > ContCount  || ContIndex < 0)
-        std::cout << "Make sure you see Index in list!" << std::endl;
+    std::cin >> InputIndex;
+    if( InputIndex < ContCount)
+        this->MyContacts[InputIndex].PrintContactFull();
+    
     else
-        this->MyContacts[ContIndex].PrintContactFull();
+     {
+        std::cout << "Make sure you see Index in list!" << std::endl;
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        return ;
+     }
     
 }

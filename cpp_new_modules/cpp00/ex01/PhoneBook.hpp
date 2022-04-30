@@ -12,8 +12,7 @@ class PhoneBook
         int      ContIndex;
         int      ContCount;
         Contacts MyContacts[MAX_CONT_NUM];
-        void ChooseIndex(int Index);
-    
+
     public:
         PhoneBook();
         void AddContact();

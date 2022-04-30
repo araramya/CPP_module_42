@@ -2,7 +2,7 @@ NAME = phonebook
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
-SRCS = megaphone.cpp
+SRCS = $(shell find "." -name "*.cpp")
 OBJS = ${SRCS:.cpp=.o}
 
 all:  ${NAME}
