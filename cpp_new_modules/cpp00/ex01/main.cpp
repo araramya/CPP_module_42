@@ -14,12 +14,10 @@ int main()
         std::cin >> usrAnswear;
         if (usrAnswear == "ADD")
         {
-            //add functionality
             MyPhoneBook.AddContact();
         }
         else if (usrAnswear == "SEARCH")
         {
-            //search funcitonality
             MyPhoneBook.PrintPhoneBook();
         }
         else if (usrAnswear == "EXIT")
@@ -29,7 +27,7 @@ int main()
         }
         else
         {
-            std::cout << "Yeah of Corse... You wanna try something new ?" << std::endl;
+            std::cout << "Yeah of course... You wanna try something new ?" << std::endl;
             std::cout << "Guess what ???" <<std::endl;
             std::cout << "There is NOTHING .... nothing..." << std::endl;
         }

@@ -32,14 +32,11 @@ void PhoneBook::PrintPhoneBook()
     std::cout << "|" << std::endl;
     while(++i < ContCount)
     {
-       // std::cout << "_____INDEX____" << i << std::endl;
-       // std::cout << "_____CONT_COUNT____" << ContCount << std::endl;
-
         this->MyContacts[i].PrintContact(i);   
     }
     std::cout << "Choose Index if you want see more information about contact." << std::endl;
     std::cin >> InputIndex;
-    if( InputIndex < ContCount)
+    if( InputIndex < ContCount && (!std::cin.fail())) 
         this->MyContacts[InputIndex].PrintContactFull();
     
     else
