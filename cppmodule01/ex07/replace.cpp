@@ -56,7 +56,6 @@ void ft_replace(char *f_name, char* str_old, char *str_new)
     ft_write(new_fname, *str);
     delete str;
 }
-strlen(str_old)
 int main(int argc, char **argv)
 {
     if(argc != 4 || argv[2] == "" || argv[3] == "")
