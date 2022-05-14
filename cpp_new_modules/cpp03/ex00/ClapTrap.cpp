@@ -37,7 +37,14 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other)
     this->energy_points = other.energy_points;
 }
 
-void ClapTrap::attack(const std::string&)
+void ClapTrap::attack(const std::string& target)
 {
-
+    if(this->hit_points > 0 && this->energy_points > 0) 
+    {
+        this->hit_points--;
+        std::cout << "ClapTrap " << this->name << " arracks " <<
+        target << ", causing" << attack_demage << " points of demage!" << std::endl;
+    }
+    else
+        std::cout << "ClapTrap " << this->name << "Can't do anything" << std::endl;
 }
