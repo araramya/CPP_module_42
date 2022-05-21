@@ -31,7 +31,7 @@ Dog& Dog::operator=(const Dog& other)
 Dog::~Dog()
 {
     std::cout << "DOG:: Default Destructor called" << std::endl;
-    //delete brain;
+    delete brain;
 }
 
 void Dog::makeSound() const

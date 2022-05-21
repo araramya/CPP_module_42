@@ -33,4 +33,5 @@ int main()
 
     delete wrong_meta;
     delete wrong_cat; 
+    system("leaks animal");
 }
