@@ -11,11 +11,9 @@ class Cat : public Animal
         
     public:
         Cat();
-        virtual ~Cat();
+        ~Cat();
         Cat(const Cat& other);
         Cat& operator=(const Cat& other);
         virtual void makeSound() const;
-        void setIdea(std::string, int i);
-        std::string getIdea(int i);
 };
 #endif

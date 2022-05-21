@@ -31,22 +31,11 @@ Dog& Dog::operator=(const Dog& other)
 Dog::~Dog()
 {
     std::cout << "DOG:: Default Destructor called" << std::endl;
-    //delete brain;
+    delete brain;
 }
 
 void Dog::makeSound() const
 {
     std::cout << "Hello I am DOG, HAF HAF HAF, Love you )" << std::endl;
-}
-
-void Dog::setIdea(std::string idea, int i)
-{
-    brain->ideas[i] = idea;
-}
-
-std::string Dog::getIdea(int i)
-{
-    std::cout << brain->ideas[i];
-    return brain->ideas[i];
 }
 

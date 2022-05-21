@@ -6,6 +6,8 @@
 
 class Brain
 {  
+    private:
+        std::string ideas[ID_NUM];
     
     public:
         Brain();
@@ -13,8 +15,6 @@ class Brain
         Brain(const Brain& other);
         Brain& operator=(const Brain& other);
         std::string *getIdeas();
-        std::string ideas[ID_NUM];
-
     
 };
 
