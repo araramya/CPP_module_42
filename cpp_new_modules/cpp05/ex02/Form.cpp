@@ -11,6 +11,7 @@ d_grd_to_execute(150)
     std::cout << "Default constructro called" << std::endl;
 }
 
+
 Form::Form(std::string s_name, bool is_signed, int d_grd_to_sign, int d_grd_to_execute) :
 s_name(s_name),
 is_signed(is_signed),
@@ -70,7 +71,7 @@ d_grd_to_execute(d_grd_to_execute)
     return d_grd_to_sign;     
  }
 
- int Form::getGradeToExecute()
+ int Form::getGradeToExecute() const
  {
      return d_grd_to_execute;
  }
@@ -85,11 +86,12 @@ d_grd_to_execute(d_grd_to_execute)
 
 std::ostream& operator<< (std::ostream& os,  Form& form)
 {
-    os<< "Form: " << form.getName();
-    if(form.isSigned())
-        os << " signed";
-    else
-        os << " not signet";
+    os << "_______FORM_INFORMATION______" << std::endl;
+    os << "Form Name: " << form.getName() << "\n";
+    os << "Signed stade: " << form.isSigned() << "\n";
+    os << "Sign Grade: " << form.getGradeToSign() << "\n";
+    os << "Sign Execute: " << form.getGradeToExecute() << "\n";
+
     return os;
 }
 
@@ -101,4 +103,18 @@ const char* Form::GradeTooLowException::what() const throw()
 const char* Form::GradeTooHighException::what() const throw()
 { 
     return "Grade Too High Exception";
+}
+
+const char* Form::GradeNotSigned::what() const throw()
+{
+    return "Form is not signed";
+}
+
+void Form::execute(Bureaucrat const &buro) const
+{
+    if(!is_signed)
+        throw Form::GradeNotSigned();
+    if(getGradeToExecute() < buro.getGrade())
+        throw Bureaucrat::GradeTooLowException();
+
 }

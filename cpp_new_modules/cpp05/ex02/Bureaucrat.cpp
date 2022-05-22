@@ -77,12 +77,18 @@ void Bureaucrat::signForm(Form& form)
     }
 }
 
+void Bureaucrat::executeForm(Form& form)
+{
+    form.execute(*this);
+    std::cout << this->getName() << " execute " << form.getName() << std::endl;
+}
+
 std::string Bureaucrat::getName()
 {
     return name;
 }
 
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
     return grade;
 }
