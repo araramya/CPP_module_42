@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/arsen_aramyan/Desktop/CPP_module_42'
+make: Leaving directory '/home/arsen_aramyan/Desktop/CPP_module_42'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
